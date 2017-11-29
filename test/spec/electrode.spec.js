@@ -57,7 +57,7 @@ describe("electrode-server", function () {
       .then(verifyServer)
       .then(stopServer);
 
-  it("should start up a default server twice", function () {
+  it.only("should start up a default server twice", function () {
     return testSimplePromise({
       electrode: {
         hostname: "blah-test-923898234" // test bad hostname

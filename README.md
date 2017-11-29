@@ -9,7 +9,7 @@ The intention is that you will extend via configuration, such that this provides
 functionality of a Hapi web server, and within your own application you will add on the
 features, logic, etc unique to your situation.
 
-This module requires Node v4.2.x+.
+This module requires Node v7.6.x+.
 
 ## Installing
 
@@ -35,18 +35,16 @@ For example, if you want to spin up a server with HTTP compression off at port 9
 
 ```js
 const config = {
-    connections: {
-        default: {
-            port: 9000,
-            compression: false
-        }
+    connection: {
+        port: 9000,
+        compression: false
     }
 };
 
 require("electrode-server")(config);
 ```
 
-However, for a more complex application, it's recommended that you use a config composer such as [electrode-confippet] to manage your app configuration.  
+However, for a more complex application, it's recommended that you use a config composer such as [electrode-confippet] to manage your app configuration.
 
 ## Configuration Options
 
@@ -62,7 +60,7 @@ All properties are optional (if not present, the default values shown below will
 
    * _default_
 
-```js    
+```js
 {
   server: {
     app: {
@@ -73,22 +71,22 @@ All properties are optional (if not present, the default values shown below will
 ```
 
 
-### `connections` (Object)
+### `connection` (Object)
 
-   * Connections to setup for the Hapi server.  Each connection should be an object field and its key is used as the labels of the connection.
+   * Connection to setup for the Hapi server.  The connection should be an object containing the connection details.
+
+   * If you want multiple connections, you should start multiple instances of `electrode-server`.
 
    * _default_
 
 ```js
 {
-    default: {
-      host: process.env.HOST,
-      address: process.env.HOST_IP || "0.0.0.0",
-      port: parseInt(process.env.PORT, 10) || 3000,
-      routes: {
-        cors: true
-      }
-    }
+  host: process.env.HOST,
+  address: process.env.HOST_IP || "0.0.0.0",
+  port: parseInt(process.env.PORT, 10) || 3000,
+  routes: {
+    cors: true
+  }
 }
 ```
 
@@ -114,7 +112,6 @@ All properties are optional (if not present, the default values shown below will
 
        * `config-composed`    - All configurations have been composed into a single one
        * `server-created`     - Hapi server created
-       * `connection-set`     - Connection set with `server.connection`
        * `plugins-sorted`     - Plugins processed and sorted by priority
        * `plugins-registered` - Plugins registered with Hapi
        * `server-started`     - Server started

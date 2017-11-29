@@ -41,11 +41,11 @@
     "node": ">= 4.2.2"
   },
   "dependencies": {
-    "electrode-confippet": "^1.2.10",
     "async-eventemitter": "^0.2.2",
     "bluebird": ">= 2.10.0 <= 3.x.x",
     "chalk": "^1.1.1",
-    "hapi": ">= 11.1.4 <= 16.x.x",
+    "electrode-confippet": "^1.2.10",
+    "hapi": "^17.1.1",
     "in-publish": "^2.0.0",
     "lodash": "^4.5.1"
   },
